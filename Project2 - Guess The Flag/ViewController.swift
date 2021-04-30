@@ -32,6 +32,9 @@ class ViewController: UIViewController {
         
         countries += ["Estonia", "France", "Germany", "Ireland", "Italy", "Monaco", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"]
         askQuestion(action: nil)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(shareTapped))
+        
     }
     
     func askQuestion(action: UIAlertAction!) {
@@ -72,6 +75,13 @@ class ViewController: UIViewController {
         
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        present(ac, animated: true)
+    }
+    
+    @objc func shareTapped() {
+
+        let ac = UIAlertController(title: title, message: String(score), preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .cancel, handler: .none))
         present(ac, animated: true)
     }
     
